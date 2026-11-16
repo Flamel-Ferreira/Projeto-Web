@@ -167,6 +167,15 @@ Ambiente: build de produção servido por `npm run preview` em `http://127.0.0.1
 
 ---
 
+## Ajustes pós-QA
+
+- **Cadastro:** card limitado a `calc(100vh - 9rem)` com rolagem interna no formulário; marca e abas permanecem fixas.
+- **Login:** toasts de sucesso/erro do login permanecem 6 s (4 s padrão + 2 s).
+- **Notas:** resumo do card limitado a 2 linhas (removido `block`, que sobrescrevia `line-clamp-2`).
+- **Verificação:** card rolou internamente em viewport de 534 px de altura; toast visível em 5,3 s e removido em 6,7 s; preview mediu 39 px (2 × 19,5 px) com `scrollHeight` de 98 px; console sem erros.
+
+---
+
 ## Pendências
 
 - Nenhuma bloqueante.

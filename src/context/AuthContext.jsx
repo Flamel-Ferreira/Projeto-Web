@@ -27,6 +27,8 @@ import { useToast } from './ToastContext.jsx';
 
 const AuthContext = createContext(null);
 
+const LOGIN_TOAST_DURATION = 6000;
+
 function readUsers() {
   const data = readJSON(STORAGE_KEYS.users, null);
   if (!data || data.schemaVersion !== SCHEMA_VERSION || !Array.isArray(data.users)) {
@@ -131,7 +133,7 @@ export function AuthProvider({ children }) {
       const genericError = 'E-mail ou senha incorretos.';
 
       if (!record) {
-        showToast(genericError, 'error');
+        showToast(genericError, 'error', { duration: LOGIN_TOAST_DURATION });
         return { ok: false, error: genericError };
       }
 
@@ -142,12 +144,12 @@ export function AuthProvider({ children }) {
         const message =
           error?.message ||
           'Não foi possível validar a senha neste navegador. Use localhost ou HTTPS.';
-        showToast(message, 'error');
+        showToast(message, 'error', { duration: LOGIN_TOAST_DURATION });
         return { ok: false, error: message };
       }
 
       if (!passwordMatches) {
-        showToast(genericError, 'error');
+        showToast(genericError, 'error', { duration: LOGIN_TOAST_DURATION });
         return { ok: false, error: genericError };
       }
 
@@ -169,6 +171,7 @@ export function AuthProvider({ children }) {
       showToast(
         `Bem-vindo(a) de volta, ${firstName(profile.displayName)}!`,
         'success',
+        { duration: LOGIN_TOAST_DURATION },
       );
       return { ok: true };
     },

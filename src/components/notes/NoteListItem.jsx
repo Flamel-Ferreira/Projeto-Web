@@ -18,7 +18,7 @@ export default function NoteListItem({ note, active, preview, timeLabel, onClick
         </span>
         <span className="shrink-0 text-[11px] text-text-muted">{timeLabel}</span>
       </span>
-      <span className="mt-1 line-clamp-2 block text-xs leading-relaxed text-text-secondary">
+      <span className="mt-1 line-clamp-2 text-xs leading-relaxed text-text-secondary">
         {preview || 'Nota sem conteúdo.'}
       </span>
     </button>
